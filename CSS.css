@@ -1,0 +1,455 @@
+/* =========================
+   GENERAL SETTINGS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #081426;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   NAVIGATION BAR
+========================= */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background: #081426;
+}
+
+.logo {
+    color: #55D6FF;
+    font-size: 25px;
+}
+
+.logo span {
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #AAB9CE;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #55D6FF;
+}
+
+
+/* =========================
+   HOME SECTION
+========================= */
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 8%;
+    gap: 30px;
+
+    background: radial-gradient(
+        circle at center,
+        #102b49,
+        #030b18 75%
+    );
+
+    overflow: hidden;
+}
+
+.home-content {
+    max-width: 450px;
+    z-index: 4;
+}
+
+.tagline {
+    color: #54c8ff;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #54c8ff;
+}
+
+.description {
+    color: #b8c8d9;
+    line-height: 1.8;
+}
+
+.start-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 25px;
+    background: #168bd1;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.start-button:hover {
+    background: #36b5ff;
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   HOME EARTH
+========================= */
+
+.hero-visual {
+    width: 50%;
+    min-width: 300px;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-planet {
+    position: relative;
+    width: 470px;
+    height: 470px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* EARTH */
+
+.planet {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0, 15, 40, 0.15),
+            transparent 45%,
+            rgba(0, 10, 30, 0.4)
+        ),
+        url("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow:
+        inset -35px -10px 60px rgba(0, 0, 0, 0.65),
+        inset 10px 5px 30px rgba(100, 180, 255, 0.15),
+        0 0 35px rgba(40, 150, 255, 0.35),
+        0 0 85px rgba(20, 100, 255, 0.2);
+
+    position: relative;
+    z-index: 2;
+
+    animation: earthFloat 6s ease-in-out infinite;
+}
+
+
+/* ATMOSPHERE */
+
+.home-planet::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+
+    border: 2px solid rgba(80, 180, 255, 0.45);
+
+    box-shadow:
+        0 0 20px rgba(50, 150, 255, 0.4),
+        inset 0 0 25px rgba(50, 150, 255, 0.2);
+
+    z-index: 1;
+}
+
+
+/* EARTH ANIMATION */
+
+@keyframes earthFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+/* =========================
+   ABOUT GPS SECTION
+========================= */
+
+.about {
+    text-align: center;
+    padding: 90px 8%;
+    background: #10213A;
+    min-height: 350px;
+}
+
+.about h2 {
+    color: #55D6FF;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.about p {
+    color: #AAB9CE;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   SIMULATION SECTION
+========================= */
+
+.simulation {
+    min-height: 100vh;
+    padding: 70px 5% 40px;
+    background: #071525;
+    color: white;
+    text-align: center;
+}
+
+.simulation h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.simulation > p {
+    color: #a9bed2;
+    margin-bottom: 30px;
+}
+
+
+/* SIMULATION GRID */
+
+.simulation-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 25px;
+    max-width: 1400px;
+    margin: auto;
+    align-items: stretch;
+}
+
+
+/* THREE.JS CONTAINER */
+
+.simulation-scene {
+    min-width: 0;
+    height: 570px;
+    position: relative;
+
+    background: radial-gradient(
+        circle,
+        #102c49,
+        #030b18
+    );
+
+    border: 1px solid #244665;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#earth-scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#earth-scene canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* CONTROL PANEL */
+
+.simulation-panel {
+    min-width: 0;
+    background: #10263d;
+    border: 1px solid #244665;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.simulation-panel h3 {
+    color: #54c8ff;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.simulation-panel label {
+    display: block;
+    color: #d4e2ef;
+    font-size: 14px;
+}
+
+.simulation-panel input[type="range"] {
+    width: 100%;
+    margin: 12px 0;
+    accent-color: #36b5ff;
+    cursor: pointer;
+}
+
+.simulation-panel p {
+    color: #b8c8d9;
+    font-size: 14px;
+    margin: 7px 0;
+}
+
+#satellite-value,
+#blocked-value,
+#delay-value,
+#range-error {
+    color: #54c8ff;
+    font-weight: bold;
+}
+
+#blocked-value {
+    color: #ff9b54;
+}
+
+#gps-status {
+    background: #0a1c2e;
+    padding: 14px;
+    border-radius: 10px;
+    line-height: 1.6;
+    border-left: 3px solid #54c8ff;
+    margin-top: 10px;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+
+    .simulation-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .simulation-scene {
+        height: 450px;
+    }
+
+    .simulation-panel {
+        gap: 12px;
+    }
+
+    .home-planet {
+        transform: scale(0.85);
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-visual {
+        width: 100%;
+        min-width: 0;
+        height: 380px;
+    }
+
+    .home-planet {
+        transform: scale(0.8);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .simulation {
+        padding: 70px 5% 30px;
+    }
+
+    .simulation-scene {
+        height: 350px;
+    }
+
+    .simulation h2 {
+        font-size: 27px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .home-planet {
+        transform: scale(0.68);
+    }
+
+}
+
+
+/* =========================
+   REAL 3D HOME SATELLITES
+========================= */
+
+#home-satellite-scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+#home-satellite-scene canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

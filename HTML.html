@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GPS LAB</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+        }
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <h2 class="logo">GPS LAB<span>.</span></h2>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About GPS</a>
+            <a href="#simulation">Simulation</a>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <section class="hero" id="home">
+        <div class="home-content">
+            <p class="tagline">WELCOME TO GPS LAB</p>
+
+            <h1>
+                Explore the
+                <span>World of GPS</span>
+            </h1>
+
+            <p class="description">
+                Discover the technology that connects your phone to the world.
+            </p>
+
+            <a href="#about" class="start-button">
+                Start Exploring →
+            </a>
+        </div>
+
+        <!-- EARTH AND REAL 3D SATELLITES -->
+        <div class="hero-visual">
+            <div class="home-planet">
+                <div id="home-satellite-scene"></div>
+                <div class="planet"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT GPS -->
+    <section class="about" id="about">
+        <h2>Discover the Science Behind GPS</h2>
+
+        <p>
+            Learn how satellites help your phone determine its location.
+        </p>
+
+        <div class="about-content">
+            <!-- Flashcards will be added by flashcards.js -->
+        </div>
+    </section>
+
+    <!-- SIMULATION -->
+    <section class="simulation" id="simulation">
+        <h2>GPS LAB Simulator</h2>
+
+        <p>
+            Explore how satellites communicate with your phone
+            to determine its position.
+        </p>
+
+        <div class="simulation-layout">
+
+            <!-- 3D SCENE -->
+            <div class="simulation-scene">
+                <div id="earth-scene"></div>
+            </div>
+
+            <!-- CONTROL PANEL -->
+            <div class="simulation-panel">
+
+                <h3>Satellite Visibility</h3>
+
+                <label for="satellite-count">Visible Satellites:</label>
+                <input type="range" id="satellite-count" min="1" max="8" value="4">
+
+                <p>
+                    Number of Satellites:
+                    <span id="satellite-value">4</span>
+                </p>
+
+                <h3>Signal Obstruction</h3>
+
+                <label for="obstruction-level">Blocked Satellite Signals:</label>
+                <input type="range" id="obstruction-level" min="0" max="4" value="0">
+
+                <p>
+                    Blocked Signals:
+                    <span id="blocked-value">0</span>
+                </p>
+
+                <h3>Signal Delay</h3>
+
+                <label for="signal-delay">Additional Signal Delay:</label>
+                <input type="range" id="signal-delay" min="0" max="100" value="0">
+
+                <p>
+                    Delay:
+                    <span id="delay-value">0</span> ns
+                </p>
+
+                <p>
+                    Estimated Range Error:
+                    <span id="range-error">0</span> meters
+                </p>
+
+                <h3>Positioning Status</h3>
+                <p id="gps-status">Waiting for simulation...</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT FILES -->
+    <script type="module" src="script.js"></script>
+    <script type="module" src="home-satellites.js"></script>
+    <script src="flashcards.js"></script>
+
+</body>
+</html>
